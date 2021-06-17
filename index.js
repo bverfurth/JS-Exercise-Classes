@@ -74,7 +74,7 @@ class Airplane {
           + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
   */
   
-          class Car {
+          class Car { 
             constructor(model, milesPerGallon) {
               this.model = model;
               this.milesPerGallon = milesPerGallon;
@@ -82,21 +82,22 @@ class Airplane {
               this.odometer = 0;
             }
             
-            fill (gallons) {
-              return this.tank += gallons;
+            fill (gallons) { // filling the gas tank 
+              return this.tank += gallons; //return the tank filling up or a full tank to how many gallons it takes. 
             }
-              drive(distance) {
-                if (distance < this.tank * this.milesPerGallon) {
-                  this.odometer += distance;
-                  this.tank -= distance / this.milesPerGallon;
-                  }
-                else {
-                  this.odometer += distance - (distance - this.tank * this.milesPerGallon);
-                  this.tank -= (distance - this.tank * this.milesPerGallon) / this.milesPerGallon;
-                  return `I ran out of fuel at ${this.odometer} miles!`;
-                  }
+            drive(distance) { // driving distance with gas
+              const availableMiles = this.tank * this.milesPerGallon; //taking available miles = the tank of gas mulitplying miles per gallon to get a total mile range
+              if (distance <= availableMiles) {     //if the distance is less than or equal to the available mies
+                this.odometer = this.odometer + distance;   //the odometer reading = the odometer + the distance being traveled
+                this.tank = this.tank - (distance / this.milesPerGallon)  //the tanks available miles = the available miles miuns (distance being traveled divided by the miles per gallon)
+              }
+              else { // or else if no gas
+                this.odometer = this.odometer + availableMiles; //the odometer total = the odometer + the available miles in the tank
+                this.tank = 0; // the tank equals no gas 
+                return `I ran out of fuel at ${this.odometer} miles!` // response i ran out of fuel at this mileage 
                 }
               }
+            }
     
   /*
     TASK 3
