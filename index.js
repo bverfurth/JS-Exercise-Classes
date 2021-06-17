@@ -80,19 +80,24 @@ class Airplane {
               this.milesPerGallon = milesPerGallon;
               this.tank = 0;
               this.odometer = 0;
-                 }
+            }
+            
             fill (gallons) {
               return this.tank += gallons;
             }
-               DeviceOrientationEvent(distance){
-                 this.odometer = this.odometer + distance;
-                 this.tank = (this.tank) - (distance/this.MilesPerGallon);
-                 if (this.tank === 0){
-                   Return `I ran out of fuel at ${this.odometer} miles`;
-                 }
-               }
-             }
-  
+              drive(distance) {
+                if (distance < this.tank * this.milesPerGallon) {
+                  this.odometer += distance;
+                  this.tank -= distance / this.milesPerGallon;
+                  }
+                else {
+                  this.odometer += distance - (distance - this.tank * this.milesPerGallon);
+                  this.tank -= (distance - this.tank * this.milesPerGallon) / this.milesPerGallon;
+                  return `I ran out of fuel at ${this.odometer} miles!`;
+                  }
+                }
+              }
+    
   /*
     TASK 3
       - Write a Lambdasian class.
