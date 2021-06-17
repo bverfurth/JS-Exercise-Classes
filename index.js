@@ -75,15 +75,16 @@ class Airplane {
   */
   
           class Car {
-            constructor(model, MilesPerGallon) {
+            constructor(model, milesPerGallon) {
               this.model = model;
-              this.MilesPerGallon = MilesPerGallon;
+              this.milesPerGallon = milesPerGallon;
               this.tank = 0;
-              this.Odometer = 0;
+              this.odometer = 0;
                  }
-            Car.prototype.fill = function (tank){
-               this.tank = This.tank + this.tank.gallons;
-               DeviceOrientationEvent(distance);
+            fill (gallons) {
+              return this.tank += gallons;
+            }
+               DeviceOrientationEvent(distance){
                  this.odometer = this.odometer + distance;
                  this.tank = (this.tank) - (distance/this.MilesPerGallon);
                  if (this.tank === 0){
